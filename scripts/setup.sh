@@ -45,7 +45,7 @@ system_install() {
     ################################################################################
 
     # install MySQL Workbench
-    apt-get install -y mysql-workbench
+    yum install -y mysql-workbench
 
     # install Guake
     yum install -y guake
@@ -67,6 +67,16 @@ system_install() {
 
     # change user to vagrant
     chown -R vagrant:vagrant /home/vagrant/.zshrc /home/vagrant/.oh-my-zsh
+}
+
+# fix ownership of home
+setup_mysql() {
+    wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+	rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+	yum install -y mysql-server
+	systemctl start mysqld
+	systemctl status mysqld
+	##oe1nhBfW<g#
 }
 
 # fix ownership of home
