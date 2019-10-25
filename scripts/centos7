@@ -90,7 +90,28 @@ setup_maven() {
 	yum-config-manager --enable epel-apache-maven
 	yum install -y apache-maven
 }
+
+
+# install docker for centos7
+setup_docker(){
+	sudo yum install -y yum-utils
+	sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+	sudo yum makecache fast
+	sudo yum install docker-ce
+	sudo systemctl start docker
+
+	sudo mkdir -p /etc/docker
+	sudo tee /etc/docker/daemon.json <<-'EOF'
+	{
+	  "registry-mirrors": ["https://w5z91a3d.mirror.aliyuncs.com"]
+	}
+	EOF
+
+	sudo systemctl daemon-reload
+	sudo systemctl restart docker
+}
 # ============================================================================
 system_install
 setup_mysql
 setup_maven
+setup_docker
