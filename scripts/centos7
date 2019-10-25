@@ -111,8 +111,15 @@ setup_docker(){
 	sudo systemctl daemon-reload
 	sudo systemctl restart docker
 }
+
+# install docker-compose
+setup_docer_compse() {
+	sudo yum install python-pip -y
+	sudo pip install docker-compose -y
+}
 # ============================================================================
 system_install
 setup_mysql
 setup_maven
 setup_docker
+setup_docer_compse
