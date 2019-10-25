@@ -84,6 +84,13 @@ fix_ownership_of_home() {
     chown -R vagrant:vagrant /home/vagrant/
 }
 
+# install maven for centos7
+setup_maven() {
+	yum-config-manager --add-repo http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+	yum-config-manager --enable epel-apache-maven
+	yum install -y apache-maven
+}
 # ============================================================================
 system_install
 setup_mysql
+setup_maven
