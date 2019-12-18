@@ -112,7 +112,7 @@ setup_docker(){
 	sudo systemctl restart docker
 }
 
-# install docker-compose
+# 阿里云镜像 docker-compose
 setup_docer_compse() {
 	sudo yum -y install epel-release
 	mkdir ~/.pip
@@ -126,7 +126,7 @@ EOF
 
 	sudo yum install python-pip -y
 	sudo pip install --upgrade pip
-	sudo pip install docker-compose -y
+	sudo pip install docker-compose
 }
 # ============================================================================
 system_install
