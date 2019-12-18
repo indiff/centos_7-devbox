@@ -117,13 +117,12 @@ setup_docer_compse() {
 	sudo yum -y install epel-release
 	mkdir ~/.pip
 
-	cat > ~/.pip/pip.conf << EOF
+	cat > ~/.pip/pip.conf <EOF
 
 	[global]
 	trusted-host=mirrors.aliyun.com
 	index-url=https://mirrors.aliyun.com/pypi/simple/
-
-	EOF
+EOF
 
 	sudo yum install python-pip -y
 	sudo pip install --upgrade pip
