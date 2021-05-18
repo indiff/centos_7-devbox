@@ -14,7 +14,7 @@ system_install() {
     yum -y install vim git zip bzip2 fontconfig curl language-pack-en unzip python g++ build-essential
 
     # install Java 8
-    yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+    #yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
     ################################################################################
     # Install the graphical environment
@@ -37,8 +37,8 @@ system_install() {
     #yum install -y virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
 
     ## change the default wallpaper
-    #wget https://raw.githubusercontent.com/VSaliy/centos_7-devbox/master/images/extenda_wallpaper.jpg -O /usr/share/xfce4/backdrops/extenda_wallpaper.jpg
-    #sed -i -e 's/extenda_wallpaper.jpg/' /etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+    wget https://raw.githubusercontent.com/VSaliy/centos_7-devbox/master/images/extenda_wallpaper.jpg -O /usr/share/xfce4/backdrops/extenda_wallpaper.jpg
+    sed -i -e 's/extenda_wallpaper.jpg/' /etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
     ################################################################################
     # Install the development tools
@@ -128,9 +128,17 @@ EOF
 	sudo pip install --upgrade pip
 	sudo pip install docker-compose
 }
+setup_sdkman(){
+	curl -s "https://get.sdkman.io" | bash
+	source "$HOME/.sdkman/bin/sdkman-init.sh"
+	sdk install java
+	sdk install maven
+}
 # ============================================================================
 system_install
-setup_mysql
-setup_maven
+#setup_mysql
+#setup_maven
+setup_sdkman
 setup_docker
 setup_docer_compse
+
